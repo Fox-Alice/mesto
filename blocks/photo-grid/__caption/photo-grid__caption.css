@@ -1,0 +1,12 @@
+.photo-grid__caption {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    background-color: #ffffff;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000;
+    padding: 25px 0 31px 21px;
+}
