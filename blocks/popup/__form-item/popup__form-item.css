@@ -1,0 +1,15 @@
+.popup__form-item {
+    border: 0;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #bcbcc4;
+    background-color: transparent;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    height: 24px;
+}
+
+.popup__form-item:last-of-type {
+    margin-top: 30px;
+}
