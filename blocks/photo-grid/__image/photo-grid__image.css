@@ -1,3 +1,4 @@
 .photo-grid__image {
-  
+    min-width: 282px;
+    min-height: 282px;
 }

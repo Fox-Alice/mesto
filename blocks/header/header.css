@@ -9,14 +9,14 @@
     .header {
       max-width: 760px;
       min-height:60px;
-      margin: 35px auto 30px;       
+      margin: 35px auto 30px;
     }
 }
 @media screen and (max-width: 1024px) and (min-width: 769px){
     .header {
       max-width: 800px;
       min-height:68px;
-      margin: 40px auto 30px;      
+      margin: 40px auto 30px;
     }
 }
 
@@ -24,6 +24,6 @@
     .header {
       max-width: 880px;
       min-height:74px;
-      margin: 45px auto 36.25px;      
+      margin: 45px auto 36.25px;
     }
 }

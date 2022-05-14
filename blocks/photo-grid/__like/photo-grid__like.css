@@ -1,5 +1,7 @@
 .photo-grid__like {
-    margin-right: 20px;
+    position: absolute;
+   bottom: 30px;
+    right: 15px;
 }
 
 .photo-grid__like:hover {

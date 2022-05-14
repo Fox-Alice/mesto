@@ -1,9 +1,10 @@
 .photo-grid__element {
+    position: relative;
     max-width: 282px;
-    overflow: hidden;    
+    overflow: hidden;
     display: flex;
     flex-flow: column;
-    margin: 0 auto 20px; 
+    margin: 0 auto 20px;
     border-radius: 10px;
 }
 
