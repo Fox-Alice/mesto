@@ -1,13 +1,11 @@
 .popup__save-button {
-    background-image: url(../../../images/popup__save-button.png);
-    background-size: 74px, cover;
+    font-size: 14px;
+    line-height: 17px;
+    color: #ffffff;
     margin: 45px 22px 25px;
     min-width: 238px;
     min-height: 46px;
     background-color: #000000;
-    background-repeat: no-repeat;
-    background-position: 82px 16px;
-    
     border-radius: 2px;
     border: 0;
     padding: 0;
@@ -16,11 +14,11 @@
 
 @media screen and (min-width: 880px){
     .popup__save-button {
-        background-size: 109px;
+        font-size: 18px;
+        line-height: 22px;
         margin: 48px 36px 37px;
         min-width: 358px;
         min-height: 50px;
-        background-position: 125px 15px;
     }
 }
 

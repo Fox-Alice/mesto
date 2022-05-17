@@ -5,9 +5,9 @@
     background-image: url(../../../images/popup-Close-Icon.svg);
     min-width: 20px;
     min-height: 20px;
-    position: relative;
+    position: absolute;
     top: -36px;
-    right: -262px;
+    right: 0;
     cursor: pointer;
 }
 
@@ -16,7 +16,7 @@
         background-size: 32px 32px;
         min-width: 32px;
         min-height: 32px;
-        right: -438px;
+        right: -40px;
         top: -40px;
     }
 }
