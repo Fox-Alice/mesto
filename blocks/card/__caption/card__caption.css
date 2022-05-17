@@ -1,6 +1,5 @@
-.photo-grid__caption {
-    box-sizing: border-box;
-    display: inline-block;
+.card__caption {
+    display: flex;
     justify-content: space-between;
     align-items: baseline;
     background-color: #ffffff;

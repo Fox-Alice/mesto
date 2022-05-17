@@ -2,7 +2,7 @@
     max-width: 320px;
     min-height: 56px;
     margin: 28px 0 38.25px 0;
-    border-bottom: 1px solid #545454;   
+    border-bottom: 1px solid rgba(84, 84, 84, .7);
 }
 
 @media screen and (max-width: 768px) and (min-width: 321px){

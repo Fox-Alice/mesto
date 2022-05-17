@@ -8,8 +8,15 @@
     line-height: 17px;
     color: #000000;
     height: 24px;
+    outline: 0;
 }
 
 .popup__form-item:last-of-type {
     margin-top: 30px;
+}
+
+@media screen and (min-width: 880px){
+    .popup__form-item {
+      height: 27px;
+    }
 }

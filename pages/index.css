@@ -21,12 +21,14 @@
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 @import url(../blocks/profile/__add-button-position/profile__add-button-position.css);
 
+@import url(../blocks/card/card.css);
+@import url(../blocks/card/__image/card__image.css);
+@import url(../blocks/card/__caption/card__caption.css);
+@import url(../blocks/card/__like/card__like.css);
+@import url(../blocks/card/__like/_active/card__like_active.css);
+@import url(../blocks/card/__title/card__title.css);
+
 @import url(../blocks/photo-grid/photo-grid.css);
-@import url(../blocks/photo-grid/__image/photo-grid__image.css);
-@import url(../blocks/photo-grid/__element/photo-grid__element.css);
-@import url(../blocks/photo-grid/__caption/photo-grid__caption.css);
-@import url(../blocks/photo-grid/__like/photo-grid__like.css);
-@import url(../blocks/photo-grid/__title/photo-grid__title.css);
 
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
