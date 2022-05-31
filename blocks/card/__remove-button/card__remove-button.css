@@ -1,0 +1,13 @@
+.card__remove-button {
+    width: 20px;
+    background: none;
+    border: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 0;
+}
+
+.card__remove-button:hover {
+    opacity: .6;
+}
