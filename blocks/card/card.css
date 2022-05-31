@@ -1,6 +1,7 @@
 .card {
     position: relative;
     max-width: 282px;
+    height: 361px;
     overflow: hidden;
     display: flex;
     flex-flow: column;
