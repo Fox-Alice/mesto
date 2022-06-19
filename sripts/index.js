@@ -86,7 +86,7 @@ function imageOpenPopup(evt) {
     let fillImage = document.querySelector('.image-popup__image');    
     fillImage.src = fillImageTarget.src;
     let fillCaption = document.querySelector('.image-popup__caption');
-    fillCaption.alt = fillImageTarget.alt;   
+    fillCaption.textContent = fillImageTarget.nextElementSibling.textContent;   
 };
 
 
