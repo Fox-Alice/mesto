@@ -66,9 +66,9 @@ function removeCard(evt) {
 function openImagePopup(evt) {
   evt.preventDefault();
   openPopup(imagePopup);
-  const imagePopupFillImageTarget = evt.target;  
+  const imagePopupFillImageTarget = evt.target;
   imagePopupFillImage.src = imagePopupFillImageTarget.src;
-  imagePopupFillImage.alt = imagePopupFillImageTarget.alt;  
+  imagePopupFillImage.alt = imagePopupFillImageTarget.alt;
   imagePopupFillCaption.textContent = imagePopupFillImageTarget.nextElementSibling.textContent;
 };
 
@@ -78,14 +78,13 @@ function createItem(element) {
   const cardElementImage = cardElementTemplate.querySelector('.card__image');
   cardElementName.textContent = element.name;
   cardElementImage.src = element.link;
-  cardElementImage.setAttribute('alt', '');  
+  cardElementImage.alt = element.name;
   subscribeToEvents(cardElementTemplate);
-  
-  return cardElementTemplate;  
+  return cardElementTemplate;
 };
-console.log(cardElementImage.getAttribute('alt'))
+
 function renderItem(data, container, position = 'append') {
-  const newCard = createItem(data);  
+  const newCard = createItem(data);
   switch (position) {
     case "append": return container.append(newCard);
     case "prepend": return container.prepend(newCard);
