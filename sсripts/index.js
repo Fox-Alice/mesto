@@ -1,9 +1,10 @@
-
 const formEditProfileElement = document.querySelector('.popup__form');
 const nameInput = document.querySelector('.popup__form-item_type_name');
 const jobInput = document.querySelector('.popup__form-item_type_job');
-let nameProfile = document.querySelector('.profile__title');
-let jobProfile = document.querySelector('.profile__description');
+const nameProfile = document.querySelector('.profile__title');
+const jobProfile = document.querySelector('.profile__description');
+const imagePopupFillImage = document.querySelector('.image-popup__image');
+const imagePopupFillCaption = document.querySelector('.image-popup__caption');
 
 function fillFormEditProfile(evt) {
   evt.preventDefault();
@@ -51,34 +52,32 @@ function renderCard(data) {
 };
 
 function likeCard(evt) {
-  let cardLikeButtonTarget = evt.target;
+  const cardLikeButtonTarget = evt.target;
   cardLikeButtonTarget.classList.toggle('card__like_active');
 };
 
 function removeCard(evt) {
-  let cardRemoveButtonTarget = evt.target;
-  let cardRemoveElement = cardRemoveButtonTarget.closest('.card');
+  const cardRemoveButtonTarget = evt.target;
+  const cardRemoveElement = cardRemoveButtonTarget.closest('.card');
   cardRemoveElement.remove();
 };
 
 function openImagePopup(evt) {
   evt.preventDefault();
   openPopup(imagePopup);
-  let ImagePopupFillImageTarget = evt.target
-  let ImagePopupFillImage = document.querySelector('.image-popup__image');
-  ImagePopupFillImage.src = ImagePopupFillImageTarget.src;
-  ImagePopupFillImage.alt = ImagePopupFillImageTarget.alt;
-  let ImagePopupFillCaption = document.querySelector('.image-popup__caption');
-  ImagePopupFillCaption.textContent = ImagePopupFillImageTarget.nextElementSibling.textContent;
+  const imagePopupFillImageTarget = evt.target;
+  imagePopupFillImage.src = imagePopupFillImageTarget.src;
+  imagePopupFillImage.alt = imagePopupFillImageTarget.alt;
+  imagePopupFillCaption.textContent = imagePopupFillImageTarget.nextElementSibling.textContent;
 };
 
 function createItem(element) {
-  cardElementTemplate = cloneTemplate(document.querySelector('.card-template'));
+  const cardElementTemplate = cloneTemplate(document.querySelector('.card-template'));
   const cardElementName = cardElementTemplate.querySelector('.card__title');
   const cardElementImage = cardElementTemplate.querySelector('.card__image');
   cardElementName.textContent = element.name;
   cardElementImage.src = element.link;
-  cardElementImage.alt = element.alt;
+  cardElementImage.alt = element.name;
   subscribeToEvents(cardElementTemplate);
   return cardElementTemplate;
 };
