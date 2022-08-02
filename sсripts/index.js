@@ -1,4 +1,4 @@
-const formEditProfileElement = document.querySelector('.popup__form');
+const formEditProfileElement = document.querySelector('.popup__form_type_edit');
 const nameInput = document.querySelector('.popup__form-item_type_name');
 const jobInput = document.querySelector('.popup__form-item_type_job');
 const nameProfile = document.querySelector('.profile__title');
