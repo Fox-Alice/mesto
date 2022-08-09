@@ -27,8 +27,6 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 };
 
-
-
 function openEditPopup() {
   openPopup(popupEditProfile);
   nameInput.value = nameProfile.textContent;
@@ -37,6 +35,24 @@ function openEditPopup() {
 
 formEditProfileOpenButton.addEventListener('click', openEditPopup);
 formEditProfileCloseButton.addEventListener('click', () => closePopup(popupEditProfile));
+
+const popups = document.querySelectorAll('.popup');
+
+for (let i = 0; i < popups.length; ++i) {
+  popups[i].addEventListener('click', function (evt) {
+    if (evt.target === evt.currentTarget)
+      closePopup(popups[i]);
+  });
+};
+
+for (let i = 0; i < popups.length; ++i) {
+  document.addEventListener('keydown', function (evt) {
+    const key = evt.key
+    if (key == 'Escape') {
+      closePopup(popups[i]);
+    };
+  });
+};
 
 const cardElement = document.querySelector('.card-template');
 const photoGrid = document.querySelector('.photo-grid');
