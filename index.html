@@ -21,7 +21,7 @@
                     <button class="profile__button" aria-label="edit" type="button"></button>
                     <p class="profile__description">Исследователь океана</p>
                 </div>
-                <button class="popup__button profile__add-button" aria-label="add" type="button"></button>
+                <button class="profile__add-button" aria-label="add" type="button"></button>
             </section>
             <section class="photo-grid">
             </section>
@@ -45,7 +45,7 @@
                             minlength="2" 
                             maxlength="40" 
                             required>
-                            <span id="name-input-error" class="name-input-error form__input-error">ошибка</span>
+                            <span id="name-input-error" class="name-input-error popup__input-error">ошибка</span>
                             <input 
                             id="job-input" 
                             type="text" 
@@ -55,7 +55,7 @@
                             minlength="2" 
                             maxlength="200" 
                             required>
-                            <span id="job-input-error" class="job-input-error form__input-error"></span>
+                            <span id="job-input-error" class="job-input-error popup__input-error"></span>
                         </fieldset>        
                         <button class="popup__button popup__save-button" aria-label="save" type="submit">Сохранить</button>                        
                     </form>                
@@ -77,7 +77,7 @@
                             minlength="2" 
                             maxlength="30"
                             required>
-                            <span id="title-input-error" class="title-input-error form__input-error"></span>
+                            <span id="title-input-error" class="title-input-error popup__input-error"></span>
                             <input 
                             id="link-input" 
                             type="url" 
@@ -85,7 +85,7 @@
                             class="popup__form-item card-popup__form-item popup__form-item_type_link"
                             placeholder="Ссылка на картинку"
                             required>
-                            <span id="link-input-error" class="link-input-error form__input-error"></span>
+                            <span id="link-input-error" class="link-input-error popup__input-error"></span>
                         </fieldset>        
                         <button class="popup__save-button card-popup__save-button" aria-label="save" type="submit">Создать</button>                        
                     </form>

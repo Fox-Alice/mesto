@@ -4,7 +4,7 @@ const validationConfig = {
     buttonElementSelector: '.popup__save-button',
     inactiveButtonClass: 'popup__save-button_inactive',
     inputErrorClass: 'popup__form-item_type_error',
-    errorClass: 'form__input-error_active'
+    errorClass: 'popup__input-error_active'
 }
 const formElement = document.querySelector(validationConfig.formElementSelector);
 const formInput = formElement.querySelector(validationConfig.formInputSelector);
