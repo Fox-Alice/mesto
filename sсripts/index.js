@@ -1,33 +1,6 @@
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 const selectors = {
   cardTitle: 'card__title',
   cardImage: 'card__image'
@@ -64,10 +37,10 @@ const editForm = document.querySelector('.popup__form_type_edit');
 const addForm = document.querySelector('.card-popup__form');
 
 const formEditValidator = new FormValidator(validationConfig, editForm);
-const formAddValidator = new FormValidator(validationConfig, addForm);
-formEditValidator.enableValidation();
-formAddValidator.enableValidation();
+const formTitleValidator = new FormValidator(validationConfig, addForm);
 
+formEditValidator.enableValidation();
+formTitleValidator.enableValidation();
 
 function fillFormEditProfile(evt) {
   evt.preventDefault();
@@ -124,17 +97,22 @@ function likeCard(evt) {
 
 function openImagePopup(evt) {
   evt.preventDefault();
-  openPopup(imagePopup);
+  
   const imagePopupFillImageTarget = evt.target;
   imagePopupFillImage.src = imagePopupFillImageTarget.src;
   imagePopupFillImage.alt = imagePopupFillImageTarget.alt;
   imagePopupFillCaption.textContent = imagePopupFillImageTarget.nextElementSibling.textContent;
+  openPopup(imagePopup);
 };
 
-function renderItem(data, container, position = 'append') {
+function createItem(data) {
   const card = new Card({data,likeCard, openImagePopup}, selectors);
-  card.createItem();
   const newCard = card.createItem();
+  return newCard
+}
+
+function renderItem(data, container, position = 'append') {
+  const newCard = createItem(data);
   switch (position) {
     case "append": return container.append(newCard);
     case "prepend": return container.prepend(newCard);
@@ -150,8 +128,6 @@ cardOpenButton.addEventListener('click', () => openPopup(cardPopup));
 
 function addItem(evt) {
   evt.preventDefault();  
-  evt.submitter.classList.add('popup__save-button_inactive');
-  evt.submitter.disabled = 'disabled';
   const cardName = cardTitleInput.value;
   const cardImage = cardLinkInput.value;
   const cardInput = {
@@ -159,8 +135,8 @@ function addItem(evt) {
     link: cardImage
   };
   renderItem(cardInput, photoGrid, 'prepend');
-  evt.target.reset();
-  closePopup(cardPopup);
+    closePopup(cardPopup);
+    evt.target.reset();
 };
 
 cardFormElement.addEventListener('submit', addItem);

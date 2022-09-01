@@ -2,7 +2,7 @@
     font-size: 14px;
     line-height: 17px;
     color: #ffffff;
-    margin: 45px 22px 25px;
+    margin: 25px 22px 25px;
     min-width: 238px;
     min-height: 46px;
     background-color: #000000;
@@ -16,7 +16,7 @@
     .popup__save-button {
         font-size: 18px;
         line-height: 22px;
-        margin: 48px 36px 37px;
+        margin: 28px 36px 37px;
         min-width: 358px;
         min-height: 50px;
     }
