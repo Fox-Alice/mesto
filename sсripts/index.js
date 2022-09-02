@@ -36,15 +36,11 @@ const cardPopup = document.querySelector('.card-popup');
 const editForm = document.querySelector('.popup__form_type_edit');
 const addForm = document.querySelector('.card-popup__form');
 
-const formEditNameValidator = new FormValidator(validationConfig, editForm, nameInput);
-const formEditJobValidator = new FormValidator(validationConfig, editForm, jobInput);
-const formAddTitleValidator = new FormValidator(validationConfig, addForm, cardTitleInput);
-const formAddLinkValidator = new FormValidator(validationConfig, addForm, cardLinkInput);
+const formEditValidator = new FormValidator(validationConfig, editForm);
+const formAddValidator = new FormValidator(validationConfig, addForm);
 
-formEditNameValidator.enableValidation();
-formEditJobValidator.enableValidation();
-formAddTitleValidator.enableValidation();
-formAddLinkValidator.enableValidation();
+formEditValidator.enableValidation();
+formAddValidator.enableValidation();
 
 
 function fillFormEditProfile(evt) {
