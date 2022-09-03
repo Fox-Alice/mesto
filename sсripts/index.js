@@ -129,6 +129,7 @@ cardOpenButton.addEventListener('click', () => openPopup(cardPopup));
 
 function addItem(evt) {
   evt.preventDefault();  
+  formAddValidator.inactiveButton();
   const cardName = cardTitleInput.value;
   const cardImage = cardLinkInput.value;
   const cardInput = {
