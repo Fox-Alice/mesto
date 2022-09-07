@@ -1,0 +1,19 @@
+{
+  "name": "yandex_praktikum",
+  "version": "0.0.1",
+  "description": "Learning platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "alice"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fox-Alice/mesto.git"
+  },
+  "author": "Fox-Alice",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fox-Alice/mesto/issues"
+  },
+  "homepage": "https://github.com/Fox-Alice/mesto#readme"
+}

@@ -1,5 +1,6 @@
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
+import Section from "./Section.js";
 
 const selectors = {
   cardTitle: 'card__title',
@@ -26,7 +27,7 @@ const imagePopupFillCaption = document.querySelector('.image-popup__caption');
 const formEditProfileOpenButton = document.querySelector('.profile__button');
 const popupEditProfile = document.querySelector('.edit-popup');
 const cardElement = document.querySelector('.card-template');
-const photoGrid = document.querySelector('.photo-grid');
+const photoGrid = '.photo-grid';
 const cardFormElement = document.querySelector('.card-popup__form');
 const cardTitleInput = document.querySelector('.popup__form-item_type_title');
 const cardLinkInput = document.querySelector('.popup__form-item_type_link');
@@ -87,9 +88,9 @@ function closeByEscape(evt) {
   }
 };
 
-function renderCard(data) {
-  data.forEach(item => renderItem(item, photoGrid));
-};
+// function renderCard(data) {
+//   data.forEach(item => renderItem(item, photoGrid));
+// };
 
 function likeCard(evt) {
   const cardLikeButtonTarget = evt.target;
@@ -106,39 +107,50 @@ function openImagePopup(evt) {
   openPopup(imagePopup);
 };
 
-function createItem(data) {
-  const card = new Card({data,likeCard, openImagePopup}, selectors);
-  const newCard = card.createItem();
-  return newCard
-}
+// function createItem(data) {
+//   const card = new Card({data,likeCard, openImagePopup}, selectors);
+//   const newCard = card.createItem();
+//   return newCard
+// }
 
-function renderItem(data, container, position = 'append') {
-  const newCard = createItem(data);
-  switch (position) {
-    case "append": return container.append(newCard);
-    case "prepend": return container.prepend(newCard);
-    case "before": return container.before(newCard);
-    case "after": return container.after(newCard);
-    default: return;
-  };
-};
+// function renderItem(data, container, position = 'append') {
+//   const newCard = createItem(data);
+//   switch (position) {
+//     case "append": return container.append(newCard);
+//     case "prepend": return container.prepend(newCard);
+//     case "before": return container.before(newCard);
+//     case "after": return container.after(newCard);
+//     default: return;
+//   };
+// };
 
-renderCard(initialCards);
+// renderCard(initialCards);
 
 cardOpenButton.addEventListener('click', () => openPopup(cardPopup));
 
-function addItem(evt) {
-  evt.preventDefault();  
-  formAddValidator.inactiveButton();
-  const cardName = cardTitleInput.value;
-  const cardImage = cardLinkInput.value;
-  const cardInput = {
-    name: cardName,
-    link: cardImage
-  };
-  renderItem(cardInput, photoGrid, 'prepend');
-    closePopup(cardPopup);
-    evt.target.reset();
-};
 
-cardFormElement.addEventListener('submit', addItem);
+const section = new Section({
+  items: initialCards, 
+  renderer: (data) => {
+  const card = new Card ({data, likeCard, openImagePopup}, selectors);
+  const newCard = card.createItem();
+  
+  section.addItem(newCard);
+  
+} 
+}, photoGrid);
+
+// function addItem(evt) {
+//   evt.preventDefault();  
+//   formAddValidator.inactiveButton();
+//   const cardName = cardTitleInput.value;
+//   const cardImage = cardLinkInput.value;
+//   const cardInput = {
+//     name: cardName,
+//     link: cardImage
+//   };
+//   renderItem(cardInput, photoGrid, 'prepend');
+//     closePopup(cardPopup);
+//     evt.target.reset();
+// };
+cardFormElement.addEventListener('submit', section.renderItems());
