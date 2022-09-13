@@ -1,12 +1,13 @@
-export class Card {
+export default class Card {
     static _template = document.querySelector('.card-template').content;
 
-    constructor({ data, likeCard, openImagePopup, cardElementName, cardElementImage, likeButtonElement, removeButtonElement, imageButtonElement }, selectors) {
+    constructor({ data, likeCard, handleCardClick, cardElementName, cardElementImage, likeButtonElement, removeButtonElement, imageButtonElement }, selectors) {
+        this._data = data,
         this._name = data.name,
         this._link = data.link,
         this._selectors = selectors,
         this._likeCard = likeCard,
-        this._openImagePopup = openImagePopup,
+        this._handleCardClick = handleCardClick,
         this._cardElementName = cardElementName,
         this._cardElementImage = cardElementImage,
         this._likeButtonElement = likeButtonElement,
@@ -32,12 +33,9 @@ export class Card {
         });
         this._removeButtonElement = this._view.querySelector('.card__remove-button');
         this._removeButtonElement.addEventListener('click', this._removeCard);
-
+        
         this._imageButtonElement = this._view.querySelector('.card__image');
-        this._imageButtonElement.addEventListener('click', (data) => {
-            this._openImagePopup(data);
-        });
-
+        this._imageButtonElement.addEventListener('click', () => this._handleCardClick(this._data));
     };
 
     _removeCard = () => {
