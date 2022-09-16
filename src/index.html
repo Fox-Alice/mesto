@@ -4,18 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
     <title>Место</title>
 </head>
 
 <body class="root">
     <div class="page">
         <header class="header">
-            <img class="header__logo" src="images/header__logo.svg" alt="Логотип проекта Место">
+            <img class="header__logo" src="<%=require('./images/header__logo.svg')%>" alt="Логотип проекта Место">
         </header>
         <main class="main">
             <section class="profile">
-                <img class="profile__avatar" src="images/profile__avatar.png" alt="Аватар путешественника">
+                <img class="profile__avatar" src="<%=require('./images/profile__avatar.png')%>" alt="Аватар путешественника">
                 <div class="profile__info">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
                     <button class="profile__button" aria-label="edit" type="button"></button>
@@ -103,16 +102,14 @@
     <template class="card-template">
     <div class="card">
         <button class="card__remove-button" aria-label="remove" type="button">
-            <img class="card__remove-image" src="images/card-remove-button.svg" alt="кнопка удалить">                
+            <img class="card__remove-image" src="<%=require('./images/card-remove-button.svg')%>" alt="кнопка удалить">                
         </button>
-        <img class="card__image" src="images/photo-grid-shihani.jpg" alt="Изображение горы Шахтау">
+        <img class="card__image" src="<%=require('./images/photo-grid-shihani.jpg')%>" alt="Изображение горы Шахтау">
         <div class="card__caption">
             <h2 class="card__title">Шиханы в Башкирии (Башкирское Предуралье)</h2>
             <button class="card__like" aria-label="like" type="button"></button>             </div>
             </div>
     </template>
-    <script src="scripts/utils/data.js"></script>
-    <script src="scripts/pages/index.js" type="module"></script>
 </body>
 
 </html>

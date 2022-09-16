@@ -1,4 +1,4 @@
-import { nameInput, jobInput } from '../pages/index.js'
+import { nameInput, jobInput } from '../../pages/index.js'
 export default class UserInfo {
     constructor(profileNameSelector, profileJobSelector) {
         this._profileName = document.querySelector(profileNameSelector),
