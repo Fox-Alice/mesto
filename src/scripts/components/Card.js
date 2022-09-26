@@ -1,22 +1,20 @@
 export default class Card {
-    static _template = document.querySelector('.card-template').content;
 
-    constructor({ data, likeCard, handleCardClick, cardElementName, cardElementImage, likeButtonElement, removeButtonElement, imageButtonElement }, selectors) {
+    constructor({ data, handleCardClick}, templateSelector, selectors) {
         this._data = data,
             this._name = data.name,
             this._link = data.link,
             this._selectors = selectors,
-            this._likeCard = likeCard,
-            this._handleCardClick = handleCardClick,
-            this._cardElementName = cardElementName,
-            this._cardElementImage = cardElementImage,
-            this._likeButtonElement = likeButtonElement,
-            this._removeButtonElement = removeButtonElement,
-            this._imageButtonElement = imageButtonElement
+            this._templateSelector = templateSelector,
+            this._handleCardClick = handleCardClick
+    }
+
+    _getTemplate() {
+        return document.querySelector(this._templateSelector).content.querySelector('.card').cloneNode(true);
     }
 
     createItem() {
-        this._view = Card._template.querySelector('.card').cloneNode(true);
+        this._view = this._getTemplate();
         this._cardElementName = this._view.querySelector('.card__title');
         this._cardElementImage = this._view.querySelector('.card__image');
         this._cardElementName.textContent = this._name;
@@ -36,6 +34,11 @@ export default class Card {
 
         this._imageButtonElement = this._view.querySelector('.card__image');
         this._imageButtonElement.addEventListener('click', () => this._handleCardClick(this._data));
+    };
+
+    _likeCard(evt) {
+        const cardLikeButtonTarget = evt.target;
+        cardLikeButtonTarget.classList.toggle('card__like_active');
     };
 
     _removeCard = () => {

@@ -1,5 +1,5 @@
 import '../pages/index.css';
-import {initialCards} from '../scripts/utils/data.js';
+import { initialCards } from '../scripts/utils/data.js';
 import Card from "../scripts/components/Card.js";
 import FormValidator from "../scripts/components/FormValidator.js";
 import Section from "../scripts/components/Section.js";
@@ -10,15 +10,15 @@ import UserInfo from "../scripts/components/UserInfo.js";
 const selectors = {
   cardTitle: 'card__title',
   cardImage: 'card__image'
-  }
+}
 
-  const validationConfig = {
-    formElementSelector: '.popup__form',
-    formInputSelector: '.popup__form-item',
-    buttonElementSelector: '.popup__save-button',
-    inactiveButtonClass: 'popup__save-button_inactive',
-    inputErrorClass: 'popup__form-item_type_error',
-    errorClass: 'popup__input-error_active'
+const validationConfig = {
+  formElementSelector: '.popup__form',
+  formInputSelector: '.popup__form-item',
+  buttonElementSelector: '.popup__save-button',
+  inactiveButtonClass: 'popup__save-button_inactive',
+  inputErrorClass: 'popup__form-item_type_error',
+  errorClass: 'popup__input-error_active'
 }
 
 export const nameInput = document.querySelector('.popup__form-item_type_name');
@@ -44,8 +44,7 @@ popupAddCard.setEventListeners();
 const popupEditInfo = new PopupWithForm('.edit-popup', fillFormEditProfile);
 popupEditInfo.setEventListeners();
 
-const userInfo = new UserInfo('.profile__title', '.profile__description');
-userInfo.setUserInfo(userInfo.getUserInfo()); 
+const userInfo = new UserInfo({ title: '.profile__title', description: '.profile__description' });
 
 const formEditValidator = new FormValidator(validationConfig, editForm);
 const formAddValidator = new FormValidator(validationConfig, addForm);
@@ -53,35 +52,32 @@ const formAddValidator = new FormValidator(validationConfig, addForm);
 formEditValidator.enableValidation();
 formAddValidator.enableValidation();
 
-const section = new Section({items: initialCards, renderer: (data) => {
-  section.addItem(createItem(data))} 
+const section = new Section({
+  items: initialCards, renderer: (data) => {
+    section.addItem(createItem(data))
+  }
 }, photoGrid);
 
-function fillFormEditProfile() {  
-  nameProfile.textContent = nameInput.value;
-  jobProfile.textContent = jobInput.value;
+section.renderItems();
+
+function fillFormEditProfile(data) {
+  formEditValidator.inactiveButton();
+  userInfo.setUserInfo(data);
   popupEditInfo.close();
 }
 
 function createItem(data) {
-  const card = new Card({data, likeCard, handleCardClick}, selectors);
+  const card = new Card({ data, handleCardClick }, '.card-template', selectors);
 
   return card.createItem();
 }
 
-function likeCard(evt) {
-  const cardLikeButtonTarget = evt.target;
-  cardLikeButtonTarget.classList.toggle('card__like_active');
-}
-
 function handleCardClick(data) {
-      
   popupWithImage.open(data)
-
 }
 
-function handleFormAddCardSubmit() { 
-  
+function handleFormAddCardSubmit() {
+
   formAddValidator.inactiveButton();
   const cardName = cardTitleInput.value;
   const cardImage = cardLinkInput.value;
@@ -89,13 +85,17 @@ function handleFormAddCardSubmit() {
     name: cardName,
     link: cardImage
   };
-  section.addItem(createItem(cardInput));
+  section.addItem(createItem(cardInput), 'before');
   popupAddCard.close();
 
 }
 
-formEditProfileOpenButton.addEventListener('click', () => popupEditInfo.open());
+formEditProfileOpenButton.addEventListener('click', () => {
+  const profileData = userInfo.getUserInfo();
+  nameInput.value = profileData.name;
+  jobInput.value = profileData.job;
+  popupEditInfo.open()
+});
+
 
 cardOpenButton.addEventListener('click', () => popupAddCard.open());
-
-cardFormElement.addEventListener('submit', section.renderItems());

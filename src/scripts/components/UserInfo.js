@@ -1,6 +1,5 @@
-import { nameInput, jobInput } from '../../pages/index.js'
 export default class UserInfo {
-    constructor(profileNameSelector, profileJobSelector) {
+    constructor({title: profileNameSelector, description: profileJobSelector}) {
         this._profileName = document.querySelector(profileNameSelector),
             this._profileJob = document.querySelector(profileJobSelector)
     }
@@ -11,8 +10,8 @@ export default class UserInfo {
     }
 
 
-    setUserInfo = ({ name, job }) => {
-        nameInput.value = name;
-        jobInput.value = job
-    }
+    setUserInfo = (data) => {
+        this._profileName.textContent = data.name;
+        this._profileJob.textContent = data.job  
+    }    
 }

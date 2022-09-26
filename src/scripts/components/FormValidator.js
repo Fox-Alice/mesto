@@ -2,12 +2,12 @@ export default class FormValidator {
     constructor (config, formElement) {
         this._config = config,
         this._formElement = formElement,
-        this._formInput = this._formElement.querySelector(this._config.formInputSelector);        
         this._buttonElement = this._formElement.querySelector(this._config.buttonElementSelector),
         this._inputList = Array.from(this._formElement.querySelectorAll(this._config.formInputSelector))       
     }
     
     _showInputError = () => {
+        this._formInput = this._formElement.querySelector(this._config.formInputSelector);
         const _formError = this._formElement.querySelector(`#${this._formInput.id}-error`);
         this._formInput.classList.add(this._config.inputErrorClass);    
         _formError.classList.add(this._config.errorClass);
@@ -15,6 +15,7 @@ export default class FormValidator {
     
 }
     _hideInputError = () => {
+        this._formInput = this._formElement.querySelector(this._config.formInputSelector);
         const _formError = this._formElement.querySelector(`#${this._formInput.id}-error`);
         this._formInput.classList.remove(this._config.inputErrorClass);
         _formError.classList.remove(this._config.errorClass);
@@ -22,7 +23,7 @@ export default class FormValidator {
     }
 
     _isValid = () => {
-        
+        this._formInput = this._formElement.querySelector(this._config.formInputSelector);
         if (!this._formInput.validity.valid) {
     
             this._showInputError();
@@ -56,6 +57,7 @@ export default class FormValidator {
     }
 
     _setEventListeners = () => {
+        this._formInput = this._formElement.querySelector(this._config.formInputSelector);
         this._toggleButtonState();
         this._inputList.forEach((formInput) => {
             formInput.addEventListener('input', () => {
@@ -66,13 +68,7 @@ export default class FormValidator {
         });    
     };
 
-    enableValidation = () => {
-        
-        this._formElement.addEventListener('submit', (evt) => {
-            
-            evt.preventDefault();
-        });
-
+    enableValidation = () => {        
         this._setEventListeners();
 };
 }

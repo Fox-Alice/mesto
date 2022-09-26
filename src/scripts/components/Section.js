@@ -11,7 +11,16 @@ export default class Section {
         });
     }
 
-    addItem(element) {
-        this._container.append(element);
+    addItem(element, position = 'after') {
+        switch (position) {
+            case 'before':
+                this._container.prepend(element)
+                break;
+            case 'after':        
+                this._container.append(element)
+                break;
+            default:
+                break;
+        }
     }
 }
