@@ -23,13 +23,8 @@ const validationConfig = {
 
 export const nameInput = document.querySelector('.popup__form-item_type_name');
 export const jobInput = document.querySelector('.popup__form-item_type_job');
-const nameProfile = document.querySelector('.profile__title');
-const jobProfile = document.querySelector('.profile__description');
 const formEditProfileOpenButton = document.querySelector('.profile__button');
 const photoGrid = '.photo-grid';
-const cardFormElement = document.querySelector('.card-popup__form');
-const cardTitleInput = document.querySelector('.popup__form-item_type_title');
-const cardLinkInput = document.querySelector('.popup__form-item_type_link');
 const cardOpenButton = document.querySelector('.profile__add-button');
 const editForm = document.querySelector('.popup__form_type_edit');
 const addForm = document.querySelector('.card-popup__form');
@@ -76,16 +71,10 @@ function handleCardClick(data) {
   popupWithImage.open(data)
 }
 
-function handleFormAddCardSubmit() {
+function handleFormAddCardSubmit(data) {
 
   formAddValidator.inactiveButton();
-  const cardName = cardTitleInput.value;
-  const cardImage = cardLinkInput.value;
-  const cardInput = {
-    name: cardName,
-    link: cardImage
-  };
-  section.addItem(createItem(cardInput), 'before');
+  section.addItem(createItem(data), 'before');
   popupAddCard.close();
 
 }
@@ -96,6 +85,5 @@ formEditProfileOpenButton.addEventListener('click', () => {
   jobInput.value = profileData.job;
   popupEditInfo.open()
 });
-
 
 cardOpenButton.addEventListener('click', () => popupAddCard.open());
