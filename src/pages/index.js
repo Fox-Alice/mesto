@@ -76,7 +76,6 @@ let userId = null;
 api.getUser()
 .then((res) => {  
   userId = res._id;
-  // console.log(res._id);
   userInfo.setUserInfo(res)  
 })
 

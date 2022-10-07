@@ -1,5 +1,3 @@
-import { data } from "browserslist"
-
 export default class Api {
     constructor (options) {
         this._url = options.url,
