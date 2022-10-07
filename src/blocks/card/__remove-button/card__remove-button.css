@@ -6,8 +6,13 @@
     top: 20px;
     right: 20px;
     padding: 0;
+    display: none;
 }
 
 .card__remove-button:hover {
     opacity: .6;
+}
+
+.card__remove-button_visible {
+    display: block;
 }

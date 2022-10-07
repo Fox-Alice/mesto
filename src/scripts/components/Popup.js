@@ -29,5 +29,5 @@ export default class Popup {
             }
 
         })
-    }    
+    }
 }

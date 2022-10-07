@@ -12,3 +12,7 @@
     opacity: 0;
     transition: visibility 200ms, opacity 200ms linear;
 }
+
+.delete-popup {
+    opacity: 1;
+}
