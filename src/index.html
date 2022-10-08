@@ -14,10 +14,10 @@
         </header>
         <main class="main">
             <section class="profile">
-                <div class = "profile__avatar-container">
-                <img class="profile__avatar" src="<%=require('./images/profile__avatar.png')%>"
-                    alt="Аватар путешественника">
-                    <div class = "profile__avatar-overlay"></div>
+                <div class="profile__avatar-container">
+                    <img class="profile__avatar" src="<%=require('./images/profile__avatar.png')%>"
+                        alt="Аватар путешественника">
+                    <div class="profile__avatar-overlay"></div>
                 </div>
                 <div class="profile__info">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -43,8 +43,9 @@
                             class="popup__form-item popup__form-item_type_name" placeholder="Имя" minlength="2"
                             maxlength="40" required>
                         <span id="name-input-error" class="name-input-error popup__input-error">ошибка</span>
-                        <input id="job-input" type="text" name="about" class="popup__form-item popup__form-item_type_job"
-                            placeholder="О себе" minlength="2" maxlength="200" required>
+                        <input id="job-input" type="text" name="about"
+                            class="popup__form-item popup__form-item_type_job" placeholder="О себе" minlength="2"
+                            maxlength="200" required>
                         <span id="job-input-error" class="job-input-error popup__input-error"></span>
                     </fieldset>
                     <button class="popup__button popup__save-button" aria-label="save" type="submit">Сохранить</button>
@@ -88,9 +89,9 @@
                 <button class="popup__close-icon" aria-label="close" type="button"></button>
                 <h2 class="popup__title delete-popup__title">Вы уверены?</h2>
                 <form class="popup__form delete-popup__form" name="delete-popup" novalidate>
-                <button class="popup__save-button delete-popup__save-button" aria-label="save"
+                    <button class="popup__save-button delete-popup__save-button" aria-label="save"
                         type="submit">Да</button>
-                    </form>
+                </form>
             </div>
             <div class="popup avatar-popup">
                 <div class="popup__container avatar-popup__container">
@@ -103,30 +104,30 @@
                                 placeholder="Ссылка на изображение" required>
                             <span id="avatar-input-error" class="avatar-input-error popup__input-error"></span>
                         </fieldset>
-                    </form>
-                    <button class="popup__save-button avatar-popup__save-button" aria-label="save"
+                        <button class="popup__save-button avatar-popup__save-button" aria-label="save"
                             type="submit">Сохранить</button>
+                    </form>
                 </div>
 
-        </div>
-    </div>
-    <template class="card-template">
-        <div class="card">
-            <button class="card__remove-button" aria-label="remove" type="button">
-                <img class="card__remove-image" src="<%=require('./images/card-remove-button.svg')%>"
-                    alt="кнопка удалить">
-            </button>
-            <img class="card__image" src="<%=require('./images/photo-grid-shihani.jpg')%>"
-                alt="Изображение горы Шахтау">
-            <div class="card__caption">
-                <h2 class="card__title">Шиханы в Башкирии (Башкирское Предуралье)</h2>
-                <div class="card__like-container">
-                  <button class="card__like" aria-label="like" type="button"></button>
-                  <span class="card__like-counter">1</span>
-                </div>
             </div>
         </div>
-    </template>
+        <template class="card-template">
+            <div class="card">
+                <button class="card__remove-button" aria-label="remove" type="button">
+                    <img class="card__remove-image" src="<%=require('./images/card-remove-button.svg')%>"
+                        alt="кнопка удалить">
+                </button>
+                <img class="card__image" src="<%=require('./images/photo-grid-shihani.jpg')%>"
+                    alt="Изображение горы Шахтау">
+                <div class="card__caption">
+                    <h2 class="card__title">Шиханы в Башкирии (Башкирское Предуралье)</h2>
+                    <div class="card__like-container">
+                        <button class="card__like" aria-label="like" type="button"></button>
+                        <span class="card__like-counter">1</span>
+                    </div>
+                </div>
+            </div>
+        </template>
     </div>
 </body>
 

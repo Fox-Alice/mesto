@@ -1,7 +1,7 @@
 export default class Api {
     constructor(options) {
-        this._url = options.url,
-            this._headers = options.headers
+        this._url = options.url;
+        this._headers = options.headers
     }
 
     _onResponce = (res) => {
@@ -9,6 +9,10 @@ export default class Api {
             return res.json()
         }
         return Promise.reject('Oшибка на стороне сервера')
+    }
+
+    getAllInfo() {
+        return Promise.all([this.getUser(), this.getInitialCards()])
     }
 
     getUser() {

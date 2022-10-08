@@ -10,26 +10,19 @@ import UserInfo from "../scripts/components/UserInfo.js";
 import Api from "../scripts/components/Api.js"
 import Popup from '../scripts/components/Popup';
 
-const validationConfig = {
-  formElementSelector: '.popup__form',
-  formInputSelector: '.popup__form-item',
-  buttonElementSelector: '.popup__save-button',
-  inactiveButtonClass: 'popup__save-button_inactive',
-  inputErrorClass: 'popup__form-item_type_error',
-  errorClass: 'popup__input-error_active'
-}
-
-export const nameInput = document.querySelector('.popup__form-item_type_name');
-export const jobInput = document.querySelector('.popup__form-item_type_job');
-const formEditProfileOpenButton = document.querySelector('.profile__button');
-const photoGrid = '.photo-grid';
-const cardOpenButton = document.querySelector('.profile__add-button');
-const editForm = document.querySelector('.popup__form_type_edit');
-const addForm = document.querySelector('.card-popup__form');
-const avatarForm = document.querySelector('.avatar-popup__form');
-const deleteButton = document.querySelector('.delete-popup__save-button')
-
-
+import {
+  validationConfig,
+  apiConfig,
+  nameInput,
+  jobInput,
+  formEditProfileOpenButton,
+  photoGrid,
+  cardOpenButton,
+  editForm,
+  addForm,
+  avatarForm,
+  avatar
+} from "../scripts/utils/constants.js"
 
 const popupWithImage = new PopupWithImage('.image-popup');
 popupWithImage.setEventListeners();
@@ -37,7 +30,7 @@ popupWithImage.setEventListeners();
 const popupAddCard = new PopupWithForm('.card-popup', handleFormAddCardSubmit);
 popupAddCard.setEventListeners();
 
-const popupEditInfo = new PopupWithForm('.edit-popup', fillFormEditProfile);
+const popupEditInfo = new PopupWithForm('.edit-popup', handleProfileFormSubmit);
 popupEditInfo.setEventListeners();
 
 const popupWithConfirmation = new PopupWithConfirmation('.delete-popup');
@@ -48,30 +41,16 @@ popupUpdateAvatar.setEventListeners();
 
 const userInfo = new UserInfo({ title: '.profile__title', description: '.profile__description', avatar: '.profile__avatar' });
 
-const options = {
-  url: "https://mesto.nomoreparties.co./v1/cohort-51",
-  headers: {
-    authorization: '31e7088a-3b9d-4de6-85fd-70c9c1c04334',
-    'Content-Type': 'application/json'
-  }
-}
-
-
-
-const api = new Api(options);
-api.getInitialCards()
-  .then((res) => {
-    section.renderItems(res);
+const api = new Api(apiConfig);
+let userId = null;
+api.getAllInfo()
+  .then(([userData, cardAll]) => {
+    userId = userData._id;
+    userInfo.setUserInfo(userData);
+    section.renderItems(cardAll);
   })
   .catch((err) => {
     console.log('Error', err);
-  })
-
-let userId = null;
-api.getUser()
-  .then((res) => {
-    userId = res._id;
-    userInfo.setUserInfo(res)
   })
 
 const formEditValidator = new FormValidator(validationConfig, editForm);
@@ -80,23 +59,28 @@ const formAvatarValidator = new FormValidator(validationConfig, avatarForm)
 
 formEditValidator.enableValidation();
 formAddValidator.enableValidation();
+formAvatarValidator.enableValidation();
 
 const section = new Section({
   renderer: (data) => {
-    section.addItem(createItem(data))
+    section.addItem(createCard(data))
   }
 }, photoGrid);
 
-function fillFormEditProfile(data) {
+function handleProfileFormSubmit(data) {
   formEditValidator.inactiveButton();
   api.editProfile(data)
     .then((res) => {
       userInfo.setUserInfo(res);
       popupEditInfo.close();
     })
+    .catch((err) => {
+      console.log('Error', err);
+    })
+
 }
 
-function createItem(data) {
+function createCard(data) {
   const card = new Card({
     data,
     handleCardClick,
@@ -111,10 +95,13 @@ function createItem(data) {
 
 function handleCardDelete(cardInstance) {
   popupWithConfirmation.open();
-  deleteButton.addEventListener('click', () => popupWithConfirmation.setSubmitAction(sendQueryApi(cardInstance)))
+  popupWithConfirmation
+    .setSubmitAction(() => {
+      performDeleteCardApiRequest(cardInstance)
+    })
 }
 
-function sendQueryApi(cardInstance) {
+function performDeleteCardApiRequest(cardInstance) {
   api.removeCard(cardInstance.getDataId())
     .then(() => {
       cardInstance.remove();
@@ -132,10 +119,10 @@ function handleCardClick(data) {
 
 function handleFormAddCardSubmit(res) {
   popupAddCard.renderLoading(true);
+  formAddValidator.inactiveButton();
   api.addCard(res)
     .then((res) => {
-      formAddValidator.inactiveButton();
-      section.addItem(createItem(res), 'before');
+      section.addItem(createCard(res), 'before');
       popupAddCard.close();
     })
     .catch((err) => {
@@ -145,16 +132,17 @@ function handleFormAddCardSubmit(res) {
 }
 
 function handleAvatarSubmit(data) {
+  formAvatarValidator.inactiveButton();
   api.updateAvatar(data)
     .then((res) => {
-      formAvatarValidator.enableValidation();
+      console.log(res);
       userInfo.setUserInfo(res);
       popupUpdateAvatar.close();
     })
     .catch((err) => {
       console.log('Error', err);
     })
-    .finally(() => this.renderLoading(false))
+    .finally(() => popupUpdateAvatar.renderLoading(false))
 }
 
 function handleCardLike(card) {
@@ -163,12 +151,18 @@ function handleCardLike(card) {
     api.putLike(card.getDataId())
       .then((data) => {
         card.updateDataLikes(data);
-      });
+      })
+      .catch((err) => {
+        console.log('Error', err);
+      })
   } else {
     api.deleteLike(card.getDataId())
       .then((data) => {
         card.updateDataLikes(data);
-      });
+      })
+      .catch((err) => {
+        console.log('Error', err);
+      })
   }
 }
 
@@ -181,7 +175,6 @@ formEditProfileOpenButton.addEventListener('click', () => {
 
 cardOpenButton.addEventListener('click', () => popupAddCard.open());
 
-const avatar = document.querySelector('.profile__avatar-overlay');
 avatar.addEventListener('click', () => {
   popupUpdateAvatar.open()
 })

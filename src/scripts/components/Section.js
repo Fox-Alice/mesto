@@ -1,5 +1,5 @@
 export default class Section {
-    constructor({ renderer }, containerSelector) {        
+    constructor({ renderer }, containerSelector) {
         this._renderer = renderer;
         this._container = document.querySelector(containerSelector);
     }
@@ -15,7 +15,7 @@ export default class Section {
             case 'before':
                 this._container.prepend(element)
                 break;
-            case 'after':        
+            case 'after':
                 this._container.append(element)
                 break;
             default:

@@ -1,9 +1,9 @@
 export default class FormValidator {
     constructor(config, formElement) {
-        this._config = config,
-            this._formElement = formElement,
-            this._buttonElement = this._formElement.querySelector(this._config.buttonElementSelector),
-            this._inputList = Array.from(this._formElement.querySelectorAll(this._config.formInputSelector))
+        this._config = config;
+        this._formElement = formElement
+        this._buttonElement = this._formElement.querySelector(this._config.buttonElementSelector);
+        this._inputList = Array.from(this._formElement.querySelectorAll(this._config.formInputSelector))
     }
 
     _showInputError = (formInput) => {
@@ -51,7 +51,7 @@ export default class FormValidator {
 
     inactiveButton = () => {
         this._buttonElement.classList.add(this._config.inactiveButtonClass);
-        this._buttonElement.disabled = 'disabled';
+        this._buttonElement.disabled = 'true';
     }
 
     _setEventListeners = () => {
