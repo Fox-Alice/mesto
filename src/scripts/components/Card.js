@@ -19,11 +19,13 @@ export default class Card {
         this._view = this._getTemplate();
         this._cardElementName = this._view.querySelector('.card__title');
         this._cardElementImage = this._view.querySelector('.card__image');
+        this._cardLikeCounter = this._view.querySelector('.card__like-counter');
         this._cardElementName.textContent = this._name;
         this._cardElementImage.src = this._link;
         this._cardElementImage.alt = this._name;
         this._subscribeToEvents();
         this.checkDeleteButtonExistence();
+        this._updateLikesCounter(this);
         return this._view;
     }
 
@@ -49,12 +51,7 @@ export default class Card {
         }
     };
 
-    _searchLikeCounter() {
-        this._cardLikeCounter = this._view.querySelector('.card__like-counter');
-    }
-
     _likeCounter() {
-        this._searchLikeCounter();
         this._cardLikeCounter.textContent = this._data.likes.length;
     }
 

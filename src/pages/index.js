@@ -44,10 +44,10 @@ const userInfo = new UserInfo({ title: '.profile__title', description: '.profile
 const api = new Api(apiConfig);
 let userId = null;
 api.getAllInfo()
-  .then(([userData, cardAll]) => {
+  .then(([userData, cards]) => {
     userId = userData._id;
     userInfo.setUserInfo(userData);
-    section.renderItems(cardAll);
+    section.renderItems(cards);
   })
   .catch((err) => {
     console.log('Error', err);
@@ -135,7 +135,6 @@ function handleAvatarSubmit(data) {
   formAvatarValidator.inactiveButton();
   api.updateAvatar(data)
     .then((res) => {
-      console.log(res);
       userInfo.setUserInfo(res);
       popupUpdateAvatar.close();
     })

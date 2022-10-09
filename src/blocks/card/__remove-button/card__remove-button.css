@@ -7,6 +7,7 @@
     right: 20px;
     padding: 0;
     display: none;
+    cursor: pointer;
 }
 
 .card__remove-button:hover {

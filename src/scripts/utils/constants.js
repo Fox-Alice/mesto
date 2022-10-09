@@ -23,5 +23,4 @@ export const cardOpenButton = document.querySelector('.profile__add-button');
 export const editForm = document.querySelector('.popup__form_type_edit');
 export const addForm = document.querySelector('.card-popup__form');
 export const avatarForm = document.querySelector('.avatar-popup__form');
-export const deleteButton = document.querySelector('.delete-popup__save-button');
 export const avatar = document.querySelector('.profile__avatar-overlay');
