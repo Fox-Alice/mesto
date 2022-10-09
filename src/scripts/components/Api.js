@@ -4,7 +4,7 @@ export default class Api {
         this._headers = options.headers
     }
 
-    _onResponce = (res) => {
+    _onResponse = (res) => {
         if (res.ok) {
             return res.json()
         }
@@ -19,7 +19,7 @@ export default class Api {
         return fetch(`${this._url}/users/me`, {
             headers: this._headers
         })
-            .then(this._onResponce)
+            .then(this._onResponse)
     }
 
     editProfile(data) {
@@ -31,7 +31,7 @@ export default class Api {
                 about: data.about
             })
         })
-            .then(this._onResponce)
+            .then(this._onResponse)
     }
 
     getInitialCards() {
@@ -39,7 +39,7 @@ export default class Api {
             headers: this._headers
         })
 
-            .then(this._onResponce)
+            .then(this._onResponse)
     }
 
     removeCard(cardId) {
@@ -47,7 +47,7 @@ export default class Api {
             method: 'DELETE',
             headers: this._headers
         })
-            .then(this._onResponce)
+            .then(this._onResponse)
     }
 
     addCard({ name, link }) {
@@ -56,7 +56,7 @@ export default class Api {
             headers: this._headers,
             body: JSON.stringify({ name, link })
         })
-            .then(this._onResponce)
+            .then(this._onResponse)
     }
 
     putLike(cardId) {
@@ -64,7 +64,7 @@ export default class Api {
             method: 'PUT',
             headers: this._headers
         })
-            .then(this._onResponce)
+            .then(this._onResponse)
     }
 
     deleteLike(cardId) {
@@ -72,7 +72,7 @@ export default class Api {
             method: 'DELETE',
             headers: this._headers
         })
-            .then(this._onResponce)
+            .then(this._onResponse)
     }
 
     updateAvatar(data) {
@@ -83,6 +83,6 @@ export default class Api {
                 avatar: data.avatar
             })
         })
-            .then(this._onResponce)
+            .then(this._onResponse)
     }
 }
