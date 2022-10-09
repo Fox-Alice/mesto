@@ -14,12 +14,12 @@
 .profile__button-position{display:flex;justify-content:center}@media screen and (min-width:880px){.profile__button-position{justify-content:start}}
 .profile__add-button{background-color:#000;background-image:url(bed8c136e13907f5eefb.svg);background-position:50%;background-repeat:no-repeat;background-size:16px 16px;border:2px solid #fff;border-radius:2px;color:#fff;cursor:pointer;font-size:32px;min-height:50px;min-width:282px}@media screen and (min-width:880px){.profile__add-button{align-self:center;background-size:22px 22px;font-size:32px;justify-self:end;max-height:50px;min-width:150px}}.profile__add-button:hover{opacity:.6}
 .card{border-radius:10px;display:flex;flex-flow:column;margin:auto;max-height:361px;max-width:282px;overflow:hidden;position:relative}
-.card__image{min-height:282px;min-width:282px}
+.card__image{cursor:pointer;min-height:282px;min-width:282px}
 .card__caption{align-items:baseline;background-color:#fff;color:#000;display:flex;font-size:24px;font-weight:900;justify-content:space-between;line-height:29px;max-height:35px;padding:22px 0 22px 21px}
 .card__like{background-color:#fff;background-image:url(1ad06e85f169668a1f36.svg);background-repeat:no-repeat;background-size:22px 19px;border:0;cursor:pointer;margin:0 25px 0 0;min-height:19px;min-width:22px;padding:0}.card__like:hover{opacity:.6}
 .card__like_active{background-color:#fff;background-image:url(35948469632d0421d697.svg);background-repeat:no-repeat;background-size:22px 19px;border:0;cursor:pointer;margin:0 25px 0 0;min-height:19px;min-width:22px;padding:0}.card__like_active:hover{opacity:.6}
 .card__title{align-self:center;color:#000;font-size:24px;font-weight:900;line-height:29px;margin:0;max-width:224px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.card__remove-button{background:none;border:none;display:none;padding:0;position:absolute;right:20px;top:20px;width:20px}.card__remove-button:hover{opacity:.6}.card__remove-button_visible{display:block}
+.card__remove-button{background:none;border:none;cursor:pointer;display:none;padding:0;position:absolute;right:20px;top:20px;width:20px}.card__remove-button:hover{opacity:.6}.card__remove-button_visible{display:block}
 .card__remove-image{display:flex;flex-direction:column;gap:1px;justify-content:center}
 .card__like-container{display:flex;flex-direction:column;font-size:10px;line-height:10px}
 .card__like-counter{font-size:13px;font-weight:400;height:13px;line-height:15.73px;margin:0 25px 0 9px;width:10px}
